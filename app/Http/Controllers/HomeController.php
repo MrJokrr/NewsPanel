@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
-use http\Env\Request;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -29,19 +30,27 @@ class HomeController extends Controller
         $posts = Post::orderBy('created_at', 'DESC')->where('Active', true)->paginate($paginate);
 
         return view('welcome', [
-            'posts' => $posts
+            'posts' => $posts, 'poti'=> $this
         ]);
     }
 
     /**
      * Show the application dashboard.
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Contracts\Support\Renderable
      * @return \Illuminate\Http\Response
      */
-    public function postView(Post $post)
+    public function View(Post $post)
     {
-        return view('post', ['post'=>$post]);
+        $notFoundMassage = 'Post not found:)';
+        foreach (Post::all() as $realPost)
+            //if((string)$realPost['id'] == $postId['id'])
+            if($realPost->id == $post[''])
+                return view('post', ['post' => $realPost['name']]);
+        return view('errorPage', ['message' => $notFoundMassage, 'description' => $post]);
+
     }
+
 
 }

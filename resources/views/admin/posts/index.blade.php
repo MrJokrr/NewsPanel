@@ -46,19 +46,6 @@
                         </thead>
                         <tbody>
                         @foreach ($posts as $post)
-{{--                            <script>--}}
-{{--                                var btn1 = document.getElementById('deleteBtn');--}}
-{{--                                function deleteBtnAsk() {--}}
-{{--                                    const result = confirm('Delete the post?');--}}
-{{--                                    if (result)--}}
-{{--                                        document.jaraBtn.action = "{{ route('post.destroy', $post['id']) }}";--}}
-{{--                                    else--}}
-{{--                                        document.jaraBtn.action = "";--}}
-{{--                                }--}}
-{{--                                btn1.onclick = deleteBtnAsk;--}}
-{{--                            </script>--}}
-
-
                             <tr>
                                 <td>
                                     {{ $post['id'] }}
@@ -79,14 +66,13 @@
                                         </i>
                                         Редактировать
                                     </a>
-                                    <form action="{{ route('post.destroy', $post['id']) }}" method="POST"
+                                    <form action="{{ route('post.destroy', $post['id']) }}" onsubmit="return confirm('Delete post {{ $post['name'] }}')" method="POST"
                                           style="display: inline-block" id="formBtnDelete">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" name="jaraBtn" class="btn btn-danger btn-sm delete-btn" id="deleteBtn">
                                             <i class="fas fa-trash">
                                             </i>
-
                                             Удалить
                                         </button>
                                     </form>
@@ -105,3 +91,4 @@
 
     <!-- /.content -->
 @endsection
+

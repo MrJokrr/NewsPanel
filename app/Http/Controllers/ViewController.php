@@ -11,4 +11,12 @@ class ViewController extends Controller
     {
         return view('post', ['post'=>$post]);
     }
+    public function View(Request $request)
+    {
+        $post = new Post();
+        $post->name=$request->title;
+        $post->image=$request->image;
+        $post->text=$request->text;
+        return view('post', ['post'=>$post]);
+    }
 }

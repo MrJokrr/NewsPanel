@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ViewController;
+use App\Http\Controllers\HomePostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,10 @@ use App\Http\Controllers\ViewController;
 |
 */
 
-Route::resource('/', HomeController::class);
-Route::get('/post', [ViewController::class, 'index'])->name('vp');
-Route::get('/viewpost', [HomeController::class, 'postView'])->name('viewPosts');
+Route::get('/', [HomeController::class, 'index']);
+
+Route::resource('/poster/{post}', HomePostController::class)->name('index', 'poster');
+
 
 Auth::routes();
 

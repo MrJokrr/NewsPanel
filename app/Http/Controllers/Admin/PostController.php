@@ -118,7 +118,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        //$post->delete();
 
         $posts = Post::orderBy('created_at', 'DESC')->get();
 

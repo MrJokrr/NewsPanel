@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/admin/dist/css/colorbox.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
+    <script src="../../../public/admin/admin.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -149,6 +150,6 @@
 <script src="/admin/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/admin/dist/js/pages/dashboard.js"></script>
-<script src="./admin/admin.js"></script>
+
 </body>
 </html>

@@ -29,7 +29,7 @@
                                         <small class="text-muted">{{ $post['created_at'] }}</small>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('viewPosts', $post['id'])}}" class="text-muted">Read more</a>
+                                        <a href="{{ route('poster', $post['id']) }}" class="text-muted">{{$post['id']}}</a>
                                     </div>
                                 </div>
                             </div>

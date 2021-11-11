@@ -10,13 +10,15 @@ $(document).ready(function () {
         }
     });
 
-    $('.delete-btn').click(function () {
-        var res = confirm('Подтвердите действия');
-        if(!res){
-            return false;
-        }
-    });
+    // $(document).getElementById('deleteBtn').onclick(function () {
+    //     var res = confirm('Подтвердите действия');
+    //     if(!res){
+    //         return false;
+    //     }
+    // });
+
 })
+
 tinymce.init({
     selector: '.editor',
     plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -25,13 +27,6 @@ tinymce.init({
     file_picker_callback : elFinderBrowser
 });
 
-// tinymce.init({
-//     selector: '.editor',
-//     plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-//     toolbar_mode: 'floating',
-//     relative_urls : false,
-//     file_picker_callback : elFinderBrowser
-// });
 
 function elFinderBrowser (callback, value, meta) {
     tinymce.activeEditor.windowManager.openUrl({
