@@ -30,26 +30,26 @@ class HomeController extends Controller
         $posts = Post::orderBy('created_at', 'DESC')->where('Active', true)->paginate($paginate);
 
         return view('welcome', [
-            'posts' => $posts, 'poti'=> $this
+            'posts' => $posts
         ]);
     }
 
     /**
-     * Show the application dashboard.
-     * @param  \Illuminate\Http\Request  $request
+     *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Contracts\Support\Renderable
      * @return \Illuminate\Http\Response
      */
-    public function View(Post $post)
+    public function show(Post $post)
     {
         $notFoundMassage = 'Post not found:)';
-        foreach (Post::all() as $realPost)
-            //if((string)$realPost['id'] == $postId['id'])
-            if($realPost->id == $post[''])
-                return view('post', ['post' => $realPost['name']]);
-        return view('errorPage', ['message' => $notFoundMassage, 'description' => $post]);
 
+        foreach (Post::all() as $realPost)
+            if($realPost->id == $post->id)
+                return view('post', ['post' => $realPost]);
+
+        return view('errorPage', ['message' => $notFoundMassage, 'description' => $post]);
+//        echo $post;
+        //return view('post', ['post' => $post]);
     }
 
 

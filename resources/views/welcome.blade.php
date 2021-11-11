@@ -29,15 +29,30 @@
                                         <small class="text-muted">{{ $post['created_at'] }}</small>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <a href="{{ route('poster', $post['id']) }}" class="text-muted">Read more: </a>
+                                        <a href="{{ route('show', $post['id']) }}" class="text-muted">Read more: </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                 @endforeach
-                    <div>
-                        {{ $posts->links() }}
-                    </div>
+                   {{ ($posts->links()) }}
+{{--                    <nav aria-label="...">--}}
+{{--                        <ul class="pagination">--}}
+{{--                            @foreach($posts->links() as $link)--}}
+{{--                            <li class="page-item disabled">--}}
+{{--                                <a class="page-link" href="#" tabindex="-1">Previous</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+{{--                            <li class="page-item active">--}}
+{{--                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--}}
+{{--                            </li>--}}
+{{--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                            <li class="page-item">--}}
+{{--                                <a class="page-link" href="#">Next</a>--}}
+{{--                            </li>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
+{{--                    </nav>--}}
 {{--                </div>--}}
 {{--                <div class="container">--}}
 {{--                    @foreach($posts as $post)--}}

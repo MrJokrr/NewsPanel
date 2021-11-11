@@ -18,8 +18,10 @@ use App\Http\Controllers\HomePostController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('show/{post}', [HomeController::class, 'show'])->name('show');
 
-Route::resource('/poster/{post}', HomePostController::class)->name('index', 'poster');
+//Route::resource('/{post}', HomeController::class)->name('index', 'poster');
+//Route::resource('/', HomeController::class)->name('/', 'show');
 
 
 Auth::routes();
