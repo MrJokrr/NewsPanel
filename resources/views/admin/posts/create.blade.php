@@ -28,9 +28,12 @@
                                     <input type="text" name="title" class="form-control" id="exampleInputEmail1"
                                            placeholder="Type post name" required>
                                 </div>
+                                    <br>
                                 <div class="form-group">
-                                    <textarea name="text" class="editor"></textarea>
+                                    <p class="text-bold">Text</p>
+                                    <textarea name="text" class="editor col-5" style="min-height: 300px"></textarea>
                                 </div>
+                                    <br>
                                 <div class="form-group">
                                     <input type="checkbox" id="scales" name="active" checked>
                                     <label for="scales">Active</label>
@@ -42,8 +45,11 @@
                                     readonly>
                                     <a href="" class="popup_selector btn btn-primary" data-inputid="feature_image">Select Image</a>
                                 </div>
-
-
+                                    <br>
+                                <div class="form-group">
+                                    <p class="text-bold">Tags</p>
+                                    <textarea name="tags" class="editor col-5" style="min-height: 300px"></textarea>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

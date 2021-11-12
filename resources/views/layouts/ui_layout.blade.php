@@ -63,21 +63,19 @@
             <a href="/" class="navbar-brand d-flex align-items-center">
                 <strong>News</strong>
             </a>
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            @if (auth()->user())
+                <div class="hidden fixed top-0 right-0 px-3 py-4 sm:block">
                     @auth
                         @if ( auth()->user()->name == 'admin')
                             <a href="{{ url('/admin_panel') }}" class="btn btn-secondary">Admin Panel</a>
                         @endif
-                        <a class="btn btn-secondary" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                        <a class="btn btn-secondary" href="{{ 'logout' }}">
+                                    {{ __('Logout') }}
                         </a>
                     @endauth
                 </div>
             @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                <a href="{{ 'login' }}" class="btn btn-secondary">Log in</a>
 
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
@@ -90,13 +88,11 @@
 </header>
 @yield('content')
 
-<footer class="text-muted py-5">
-    <div class="container">
-        <p class="float-end mb-1">
-            <a href="#">Back to top</a>
+<footer class="text-muted align-items-end bg-secondary">
+    <div class="container bg-secondary">
+        <p class="float-end mb-4">
+            <a href="#" class="fs-4">Back to top</a>
         </p>
-        <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
     </div>
 </footer>
 

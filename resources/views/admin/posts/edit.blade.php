@@ -33,25 +33,32 @@
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Название</label>
+                                    <label for="exampleInputEmail1">Name</label>
                                     <input type="text" value="{{ $post['name'] }}" name="title" class="form-control"
                                            id="exampleInputEmail1" placeholder="Введите название статьи" required>
                                 </div>
-
+                                    <br>
                                 <div class="form-group">
-                                    <textarea name="text" class="editor">{{ $post['text'] }}</textarea>
+                                    <p class="text-bold">Text</p>
+                                    <textarea name="text" class="editor col-5" style="min-height: 300px">{{ $post['text'] }}</textarea>
                                 </div>
+                                    <br>
                                 <div class="form-group">
                                     <input type="checkbox" id="scales" name="active" checked>
                                     <label for="scales">Active</label>
                                 </div>
                                 <div class="form-group">
-                                    <label for="feature_image">Изображение статьи</label>
+                                    <label for="feature_image">Poster image</label>
                                     <img src="{{ $post['image'] }}" alt="" class="img-uploaded"
                                          style="display: block; width: 300px">
                                     <input type="text" name="image" class="form-control"
                                            id="feature_image" name="feature_image" value="{{ $post['image'] }}" readonly>
                                     <a href="" class="popup_selector" data-inputid="feature_image">Выбрать изображение</a>
+                                </div>
+                                    <br>
+                                <div class="form-group">
+                                    <p class="text-bold">Tags</p>
+                                    <textarea name="tags" class="editor col-5" style="min-height: 300px">{{ $post['tags'] }}</textarea>
                                 </div>
                             </div>
                             <!-- /.card-body -->

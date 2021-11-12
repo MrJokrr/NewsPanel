@@ -17,7 +17,7 @@
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-3">
-                @foreach($posts as $post)
+                    @foreach($posts as $post)
 
                         <div class="col">
                             <div class="card shadow-sm">
@@ -34,43 +34,8 @@
                                 </div>
                             </div>
                         </div>
-                @endforeach
+                    @endforeach
                    {{ ($posts->links()) }}
-{{--                    <nav aria-label="...">--}}
-{{--                        <ul class="pagination">--}}
-{{--                            @foreach($posts->links() as $link)--}}
-{{--                            <li class="page-item disabled">--}}
-{{--                                <a class="page-link" href="#" tabindex="-1">Previous</a>--}}
-{{--                            </li>--}}
-{{--                            <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
-{{--                            <li class="page-item active">--}}
-{{--                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--}}
-{{--                            </li>--}}
-{{--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
-{{--                            <li class="page-item">--}}
-{{--                                <a class="page-link" href="#">Next</a>--}}
-{{--                            </li>--}}
-{{--                            @endforeach--}}
-{{--                        </ul>--}}
-{{--                    </nav>--}}
-{{--                </div>--}}
-{{--                <div class="container">--}}
-{{--                    @foreach($posts as $post)--}}
-{{--                    {{ $post->name }}--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-
-{{--                @if(true)--}}
-{{--                    {{ $posts->render() }}--}}
-{{--                @endif--}}
-{{--                <div class="post_pagination">--}}
-{{--                    <ul>--}}
-{{--                        <li class="active"><a href="">1</a></li>--}}
-{{--                        <li><a href="">2</a></li>--}}
-{{--                        <li><a href="">3</a></li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-
             </div>
         </div>
 @endsection

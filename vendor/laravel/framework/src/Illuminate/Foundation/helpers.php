@@ -920,7 +920,6 @@ if (! function_exists('view')) {
      * @param  \Illuminate\Contracts\Support\Arrayable|array  $data
      * @param  array  $mergeData
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
-     * @return \Illuminate\Http\Response
      */
     function view($view = null, $data = [], $mergeData = [])
     {
