@@ -20,14 +20,17 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        $email = 'jara@og_mail.du';
+
         DB::table('users')->insert([
             'name' => 'Jara' ,
-            'email' => 'jara@og_mail.org',
+            'email' => $email,
             'password' => 'ThisIsCrazy123',
         ]);
 
-//        if(User::all()->where('email', $userEmail)!=[])
-//            User::all()->where('email', $userEmail)[0] -> assignRole('admin');
+        foreach (User::all()->where('email', $email) as $user)
+            $user->assignRole('admin');
+
     }
 
 //    public function run()
@@ -57,7 +60,8 @@ class UsersSeeder extends Seeder
 //            'password' => $userPass,
 //        ]);
 //
-//        if(User::all()->where('email', $userEmail)!=[])
-//            User::all()->where('email', $userEmail)[0] -> assignRole('user');
+//        foreach (User::all()->where('email', $email) as $user)
+//            $user->assignRole('user');
 //    }
+
 }
