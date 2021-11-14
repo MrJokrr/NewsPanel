@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('login');
+        //$this->middleware('auth')->except('login');
     }
 
     /**
@@ -50,7 +50,8 @@ class HomeController extends Controller
 
             foreach ($postTags as $tag)
             {
-                $tagWord = "<a href=\"{{ route(\'show\', ".$postDB->id.") }}\">".$tag."</a>";
+                //$tagWord = "<a href=\"\show".$postDB->id.">".$tag."</a>";
+                $tagWord = '<a href="'. route('show', $postDB['id']) .' ">'.$tag.'</a>';
                 $newText = str_replace($tag, $tagWord, $newText);
             }
         }
