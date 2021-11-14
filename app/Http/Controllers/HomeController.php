@@ -34,6 +34,59 @@ class HomeController extends Controller
         ]);
     }
 
+
+    /**
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    private function checker(Post $post)
+    {
+        $newText = $post['text'];
+
+        foreach (Post::all() as $postDB)
+        {
+            $postTags = explode(', ', $postDB['tags']);
+
+            foreach ($postTags as $tag)
+            {
+                $tagWord = "<a href=\"{{ route(\'show\', ".$postDB->id.") }}\">".$tag."</a>";
+                $newText = str_replace($tag, $tagWord, $newText);
+            }
+        }
+        return $newText;
+    }
+
+    private function makeLeftRight(Post $post)
+    {
+        $posts = Post::orderBy('created_at', 'DESC')->get();
+
+        $prev = "";
+        $next = "";
+
+        $found = false;
+
+        foreach ($posts as $postDB) {
+            $next = $postDB->id;
+
+            if ($found)
+                break;
+
+            if ($post->id == $postDB->id)
+                $found = true;
+
+            if (!$found)
+                $prev = $postDB['id'];
+        }
+
+        if ($prev == $post['id'])
+            $prev = "";
+        if ($next == $post['id'])
+            $next = "";
+
+        return [$prev, $next];
+    }
+
     /**
      *
      * @param  \App\Models\Post  $post
@@ -41,31 +94,22 @@ class HomeController extends Controller
      */
     public function show(Post $post)
     {
-        $postIDs = [];
+        foreach (Post::all() as $realPost)
+            if($realPost->id == $post->id) {
 
-        $posts = Post::orderBy('created_at', 'DESC');
-        foreach ($posts as $postDB)
-            $postIDs += $postDB['id'];
+                $newPost = $post;
 
-        $prev = "";
-        $next = "";
+                $BLR = $this->makeLeftRight($post);
 
-        foreach ($posts as $postDB)
-            if($postDB['id'] = $post['id']) {
-                $prev = prev($postDB);
-                next($postDB);
-                $next = next($postDB);
+                $newPost['text'] = $this->checker($newPost);
+
+                //$newPost->text = str_replace('Pushka', urldecode('<a href=" route(\'show\', '.$post['id'].') ">Makushka</a>'), $newPost['text']);
+
+                return view('post', ['post' => $newPost, 'nextPost' => $BLR[1], 'prevPost' => $BLR[0]]);
             }
-
         $notFoundMassage = 'Post not found:)';
 
-        foreach (Post::all() as $realPost)
-            if($realPost->id == $post->id)
-                return view('post', ['post' => $realPost, 'nextPost' => $next, 'prevPost' => $prev])->with('prevPost' , $prev);
-
-        return view('errorPage', ['message' => $notFoundMassage, 'description' => $post]);
-//        echo $post;
-        //return view('post', ['post' => $post]);
+        return view('errorPage', ['message' => $notFoundMassage, 'description' => $post['id']]);
     }
 
 

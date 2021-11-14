@@ -141,7 +141,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-
         $post->name=$request->title;
         $post->image=$request->image;
         $post->text=$request->text;

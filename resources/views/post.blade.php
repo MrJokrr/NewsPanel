@@ -25,13 +25,17 @@
         <div class="container-fluid py-2">
             <img src="{{ $post['image'] }}" alt="" class="img-uploaded"
                  style="display: block; height: 400px">
-            <p class="col-md-7 fs-3 pt-4">{{ $post['text'] }}</p>
+            <p class="col-md-7 fs-3 pt-4">{!! $post['text'] !!}</p>
         </div>
     </div>
     <div class="ml-4">
-{{--            <a href="{{ route('show', $prevPost['id']) }}" class="btn btn-secondary my-2">Previous post</a>;--}}
-{{--            <a href="{{ route('show', $nextPost['id']) }}" class="btn btn-secondary my-2">Second post</a>;--}}
-            <a href="{{ route('show', $post['id']) }}" class="btn btn-secondary my-2">Previous post</a>
-            <a href="{{ route('show', $post['id']) }}" class="btn btn-secondary my-2">Second post</a>
+        @if($prevPost != null)
+            <a href="{{ route('show', $prevPost) }}" class="btn btn-secondary my-2">Previous</a>
+        @endif
+        @if($nextPost != "")
+            <a href="{{ route('show', $nextPost) }}" class="btn btn-secondary my-2">Next</a>
+        @endif
+{{--            <a href="{{ route('show', $post['id']) }}" class="btn btn-secondary my-2">Previous post</a>--}}
+{{--            <a href="{{ route('show', $post['id']) }}" class="btn btn-secondary my-2">Second post</a>--}}
     </div>
 @endsection
