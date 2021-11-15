@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Nette\Utils\Random;
 use App\Models\User;
 
-include 'C:\OSPanel\domains\NewsPanel\news\public\names.blade.php';
+//include 'C:\OSPanel\domains\NewsPanel\news\public\names.blade.php';
 
 class UsersSeeder extends Seeder
 {
