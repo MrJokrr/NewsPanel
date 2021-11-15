@@ -21,7 +21,7 @@ Route::get('show/{post}', [HomeController::class, 'show'])->name('show');
 
 //Route::resource('/{post}', HomeController::class)->name('index', 'poster');
 //Route::resource('/', HomeController::class)->name('/', 'show');
-
+Route::redirect('/logout', '/');
 
 Auth::routes();
 
